@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import useScore from "./hooks/useCount";
+import useScore from "./hooks/useScore";
 
 const App = () => {
   const { score, onScoreDown, onScoreUp } = useScore();
