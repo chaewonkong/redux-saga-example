@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { scoreDown, scoreUp } from "./actions/actions";
+import { connect } from "react-redux";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface IProps {
+  score: number;
 }
 
-export default App;
+const App: React.FC<IProps> = props => {
+  return (
+    <div className="App">
+      <h1>Score: {props.score}</h1>
+      <button>Score Up</button>
+    </div>
+  );
+};
+
+const mapStateToProps = (state: any) => state.score;
+const mapDispatchToProps = () => ({ scoreUp, scoreDown });
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
