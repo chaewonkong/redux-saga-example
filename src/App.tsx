@@ -1,23 +1,17 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { scoreDown, scoreUp } from "./actions/actions";
-import { connect } from "react-redux";
+import useScore from "./hooks/useCount";
 
-interface IProps {
-  score: number;
-}
-
-const App: React.FC<IProps> = props => {
+const App = () => {
+  const { score, onScoreDown, onScoreUp } = useScore();
   return (
     <div className="App">
-      <h1>Score: {props.score}</h1>
-      <button>Score Up</button>
+      <h1>Score: {score}</h1>
+      <button onClick={onScoreUp}>Score Up</button>
+      <button onClick={onScoreDown}>Score Down</button>
     </div>
   );
 };
 
-const mapStateToProps = (state: any) => state.score;
-const mapDispatchToProps = () => ({ scoreUp, scoreDown });
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
