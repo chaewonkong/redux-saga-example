@@ -1,4 +1,4 @@
-import { SCORE_DOWN_ASYNC, SCORE_UP_ASYNC } from "../actions/constants";
+import { SCORE_DOWN, SCORE_UP } from "../actions/constants";
 import { ScoreAction } from "../actions/actions";
 
 const initialState = {
@@ -9,10 +9,10 @@ const reducer = (state = initialState, action: ScoreAction) => {
   const newState = { ...state };
 
   switch (action.type) {
-    case SCORE_UP_ASYNC:
+    case SCORE_UP:
       newState.score += 1;
       return newState;
-    case SCORE_DOWN_ASYNC:
+    case SCORE_DOWN:
       newState.score -= 1;
       return newState;
     default:
